@@ -105,13 +105,56 @@ async function showResults() {
     };
 }
 
+async function showResultsPage() {
+    const table = document.querySelector("table");
+    for (const songId of Object.keys(SONGS)) {
+        const row = document.createElement("tr");
+        const songIdCell = document.createElement("td");
+        const flacCell = document.createElement("td");
+        const aacCell = document.createElement("td");
+        const mp3Cell = document.createElement("td");
+        const nCell = document.createElement("td");
+
+        songIdCell.innerText = songId;
+        flacCell.innerText = "?";
+        aacCell.innerText = "?";
+        mp3Cell.innerText = "?";
+        nCell.innerText = "?";
+        row.appendChild(songIdCell);
+        row.appendChild(flacCell);
+        row.appendChild(aacCell);
+        row.appendChild(mp3Cell);
+        row.appendChild(nCell);
+
+        if (window.getStatsForSong) {
+            const stats = await window.getStatsForSong(songId);
+            const total = Object.keys(stats).reduce((acc, cur) => acc + stats[cur], 0);
+            nCell.innerText = total.toString();
+            flacCell.innerText = (100.0*(stats["flac"]||0)/(1.0*total)).toFixed(2);
+            aacCell.innerText = (100.0*(stats["aac"]||0)/(1.0*total)).toFixed(2);
+            mp3Cell.innerText = (100.0*(stats["mp3"]||0)/(1.0*total)).toFixed(2);
+        }
+
+        table.appendChild(row);
+    };
+}
+
 window.onload = async () => {
-    songOrder = Object.keys(SONGS);
-    shuffle(songOrder);
-    const songName = songOrder.pop();
-    await selectSong(songName);
-    document.querySelector("#select_track1").onclick = handleSelection;
-    document.querySelector("#select_track2").onclick = handleSelection;
-    document.querySelector("#select_track3").onclick = handleSelection;
+    if (window.location.href.includes("results.html")) {
+        const delay = (delayInms) => {
+            return new Promise(resolve => setTimeout(resolve, delayInms));
+          };
+
+        await delay(200);
+        await showResultsPage();
+    } else {
+        songOrder = Object.keys(SONGS);
+        shuffle(songOrder);
+        const songName = songOrder.pop();
+        await selectSong(songName);
+        document.querySelector("#select_track1").onclick = handleSelection;
+        document.querySelector("#select_track2").onclick = handleSelection;
+        document.querySelector("#select_track3").onclick = handleSelection;
+    }
 }
 
