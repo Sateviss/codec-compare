@@ -71,11 +71,14 @@ audio::-webkit-media-controls-time-remaining-display {
 
 table {
     font-size: 20pt;
-    td {
+    th {
+        background-color: #e6e6e6;
+    }
+    td, th {
         padding: 8px;
-        border: 1px solid #ababab;
+        border-bottom: 1px solid #ababab;
     }
     tr:hover {
-        background-color: #b3b3b3;
+        background-color: #e6e6e6;
     }
 }
