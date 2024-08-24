@@ -68,6 +68,7 @@ async function showResults() {
     }
     document.querySelector("#song_info").hidden = true;
     document.querySelector(".track_container").hidden = true;
+    document.querySelectorAll("audio").forEach(a => a.pause());
     const table = document.querySelector("table");
     table.hidden = false;
     for (const songId of Object.keys(SONGS)) {
