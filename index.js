@@ -11,8 +11,8 @@ const SONGS = {
 }
 
 const FORMAT_DICT = {
-    aac: "AAC (ffmpeg 192kbit/s)",
-    mp3: "MP3 (ffmpeg 192kbit/s)",
+    aac: "AAC (ffmpeg 256kbit/s)",
+    mp3: "MP3 (ffmpeg 256kbit/s)",
     flac: "FLAC (original)"
 }
 
