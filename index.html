@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="song_info">
+            <img id="song_img" src="" alt="">
+            <code id="song_id"></code>
+            <p id="song_data"></p>
+        </div>
+        <div class="track_container">
+            <div class="track" id="track1">
+                <audio controls preload="none">
+                    Your browser does not support audio tags
+                </audio>
+                <button id="select_track1">I Prefer Track 1</button>
+            </div>
+            <div class="track" id="track2">
+                <audio controls preload="none">
+                    <source src="">
+                    Your browser does not support audio tags
+                </audio>
+                <button id="select_track2">I Prefer Track 2</button>
+            </div>
+            <div class="track" id="track3">
+                <audio controls preload="none">
+                    <source src="">
+                    Your browser does not support audio tags
+                </audio>
+                <button id="select_track3">I Prefer Track 3</button>
+            </div>
+        </div>
+        <table hidden> 
+            <tr>
+                <th>Song ID</th>
+                <th>Your Choice</th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
