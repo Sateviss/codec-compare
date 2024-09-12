@@ -17,8 +17,6 @@ const FORMAT_DICT = {
 }
 
 let songOrder = [];
-let app;
-let firestore;
 
 function shuffle(array) {
     let currentIndex = array.length;
