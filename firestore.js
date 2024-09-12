@@ -14,8 +14,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(window.app);
-const firestore = FS.getFirestore(window.app);
+const analytics = getAnalytics(app);
+const firestore = FS.getFirestore(app);
 
 window.getStatsForSong = async function (songId) {
     let out = {};
